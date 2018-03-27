@@ -11,6 +11,7 @@ var command = argv._[0];
 console.log('Command', command);
 
 if (command === 'add') {
+  //pulls the title and body arguments from the command line and passes them into the 
   notes.addNote(argv.title, argv.body);
   if (note) {
     console.log("Note created!");
@@ -25,10 +26,9 @@ if (command === 'add') {
 } else if (command === 'read') {
   notes.getNote(argv.title);
 } else if (command === 'remove') {
-  notes.removeNote(argv.title);
-  if (notes.length > filteredNotes.length) {
-    console.log("Note was removed!");
-  }
+  var noteRemoved = notes.removeNote(argv.title);
+  var message = noteRemoved ? "Note was removed" : "No notes to remove!";
+  
  } else {
   console.log('Command not recognized');
 }
