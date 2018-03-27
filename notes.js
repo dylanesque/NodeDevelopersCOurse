@@ -30,6 +30,9 @@ var addNote = (title, body) => {
     notes.push(note);
     saveNotes(notes);
     return note;
+    var noteSuccess = "Note was created!";
+  } else {
+    var noteFailure = "Note creation failed!";
   }
 };
 
