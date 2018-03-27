@@ -2,6 +2,7 @@ console.log('Starting notes.js');
 
 const fs = require('fs');
 
+//Reads the file and returns a version of it in JSON, or returns an empty array if nothing exists.
 var fetchNotes = () => {
   try {
     var notesString = fs.readFileSync('notes-data.json');
@@ -11,9 +12,11 @@ var fetchNotes = () => {
   }
 };
 
+//Takes the notes prameter and writes a string version of it to file. 
 var saveNotes = (notes) => {
   fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 };
+
 
 var addNote = (title, body) => {
   var notes = fetchNotes();
@@ -42,7 +45,13 @@ var getNote = (title) => {
 };
 
 var removeNote = (title) => {
-  console.log('Removing note', title);
+  //Fetch notes.
+  //Filter notes
+  //Remove note that matches provided title.
+  var notes = fetchNotes();
+  var filteredNotes = notes.fiter((note) => note.title !== title);
+    saveNotes(filteredNotes);
+  }
 };
 
 
